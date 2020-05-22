@@ -11,14 +11,15 @@
 //   },
 // };
 
+const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/food";
 
 module.exports = {
   development: {
     client: "sqlite3",
-    useNullAsDefault: true,
     connection: {
-      filename: "./data/users.db3",
+      filename: "./data/food.db3",
     },
+    useNullAsDefault: true,
     migrations: {
       directory: "./data/migrations",
     },
@@ -28,10 +29,10 @@ module.exports = {
   },
   testing: {
     client: "sqlite3",
-    useNullAsDefault: true,
     connection: {
-      filename: ":memory:",
+      filename: ":memory:"
     },
+    useNullAsDefault: true,
     migrations: {
       directory: "./data/migrations",
     },
@@ -39,4 +40,7 @@ module.exports = {
       directory: "./data/seeds",
     },
   },
+
 };
+
+//connection: process.env.DATABASE_URL
